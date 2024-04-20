@@ -1,64 +1,28 @@
-<!DOCTYPE html><html><head>
-<script src="/cdn-cgi/apps/head/aqhzBqkyhgXFT9tYquvCBE2xpuY.js"></script><style>div a img{visibility:hidden;}</style>
-<meta name='viewport' content='width=device-width, initial-scale=1.0' />
-<meta name="referrer" content="no-referrer" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/3.0.10/controls.min.css" />
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shaka Player YouTube Theme</title>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/3.0.10/controls.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/3.0.10/shaka-player.ui.min.js" integrity="sha512-QFvv7o/fr201Dyw7VHNBDCn4UCQRuPLLWSLeAk6BGfgK3DTSv0SCFf/4eo9JYVIlAEMFfZDwbtHNUPi1XgpUPg==" crossorigin="anonymous"></script>
     <script defer src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet" href="/theme/youtube-theme.css" />
+    <link rel="stylesheet" href="youtube-theme.css" />
     <style type="text/css">
       #wrap { width: 600px; margin: 50px auto;  }
     </style>
-<center> 
-<section id="wrap">
-<div data-shaka-player-container data-shaka-player id="youtube-theme" style='width: 100%; height: 100%'><video autoplay data-shaka-player id='video' style='width:100%;height:100%;'></video></div>
- </section>
-<script> 
-async function init() { 
-const video = document.getElementById('video'); 
-const ui = video['ui']; 
-const controls = ui.getControls(); 
-const player = controls.getPlayer(); 
-player.configure({
-  drm: {
-    clearKeys: {
-      // 'key-id-in-hex': 'key-in-hex',
-      "ca4f5ff4e4694d54bdfdc9bd34384290": "1100fe297146f7d024b59944f09e6d1a"
-    }
-  }
-            });
-            player.addEventListener('error', onPlayerErrorEvent);
-            controls.addEventListener('error', onUIErrorEvent);
-            try {
-                await player.load(manifestUri);
-                console.log('The video has now been loaded!');
-            } catch (error) {
-                onPlayerError(error);
-            }
-            player.getNetworkingEngine().registerRequestFilter(function(type, request) {
-                if (type == shaka.net.NetworkingEngine.RequestType.SEGMENT) {
-                    request.headers['authorization'] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3bXZlciI6Miwid21pZGZtdCI6ImFzY2lpIiwid21pZHR5cCI6MSwid21rZXl2ZXIiOjEsIndtaWRsZW4iOjUxMiwid21pZCI6Ik4yUmhNREU0WVdFdE5EQmxPQzAwWkdSaUxUazRNbVF0TURJNE5HVmhPVEppTnpNMCIsIndtb3BpZCI6MzIsImV4cCI6MTcxMzgzMzAxNSwiaWF0IjoxNzEzMjI5MDE1fQ.ppJjqfp0tXKjrQcP9D2eQscYwr9Cf6MTnu0fGXvGPSc';
-                }
-            });
- 
-//player.configure({drm:{servers:{'com.widevine.alpha':'https://license.dstv.com/widevine/getLicense?CrmId=afl&AccountId=afl&ContentId=SH2&SessionId=D3C00F885C24B9C6&Ticket=C839A8D71AB94299'}}}); 
-window.player = player; 
-window.ui = ui; 
-player.addEventListener('error', onPlayerErrorEvent); 
-controls.addEventListener('error', onUIErrorEvent); 
-try{await player.load('https://d1fk7kbmz4il3.cloudfront.net/CH3/masterCH3.mpd'); 
-console.log('The video has now been loaded!');} catch (error) {onPlayerError(error);}} 
-function onPlayerErrorEvent(errorEvent) {onPlayerError(event.detail);} 
-function onPlayerError(error) {console.error('Error code', error.code, 'object', error);} 
-function onUIErrorEvent(errorEvent) {onPlayerError(event.detail);} 
-function initFailed(errorEvent) {console.error('Unable to load the UI library!');} 
-document.addEventListener('shaka-ui-loaded', init); 
-document.addEventListener('shaka-ui-load-failed', initFailed); 
-</script>
-<script type='text/javascript' src='https://encrypt2.skycdn.ga/udp/Counter'></script>
-<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6ebfddfd6fa3499c',m:'D4YJv6au4IB.PA2DqTLxZStJydWh51fiwv2G9eC_8Gk-1647290874-0-AYjwUV5YDhzDCl2C9r7Xi8tcRCaEcQTbCAMGCeTNqDvB45L3MnGBdkKHu6G387dXhgYcctN3ANz21D9fu1HhsRAcyKR0VCGqS9aNi6PQ8MvMDWfoO6WhJhqlukHMDXtYfg==',s:[0x6c6fafcade,0x9f5e65094f],u:'/cdn-cgi/challenge-platform/h/g'}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6ebfddfd6fa3499c","version":"2021.12.0","r":1,"token":"a919438182254588b33b5297605b9ab4","si":100}' crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="/theme/youtube-script.js"></script>
+  </head>
+  <body>
+    <section id="wrap">
+            <div class="youtube-theme">
+              <video autostart="false" data-shaka-player id="youtube-theme" style="width:100%;height:100%"></video>
+            </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="youtube-script.js"></script>
+  </body>
 </html>
